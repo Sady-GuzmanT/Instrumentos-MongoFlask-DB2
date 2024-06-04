@@ -4,7 +4,7 @@
 #### Uses: Python + Flask + PyMongo + Free Mongo Cluster + Dotenv + Docker<br>
 <br>
 
-#### Sistema de Informacion para Base de Datos 2. Migracion BD1 - Central de Instrumentos ULS
+#### Sistema de Informacion para asignatura Base de Datos 2. Migracion BD1 - Central de Instrumentos ULS
 
 ---
 
