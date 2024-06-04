@@ -18,6 +18,7 @@ uri = os.getenv("mongo_srv")
 client = MongoClient(uri)
 db = client['instrumentos']
 students_collection = db['estudiantes']
+instruments_collection = db['instrumentos']
 
 def format_dates(result):
     for key, value in result.items():
@@ -47,13 +48,24 @@ def index():
 
 @app.route("/students")
 def view_students():
-    all_students = list(students_collection.find())
-    return render_template('students.html', students=all_students)
+    students = list(students_collection.find())
+    return render_template('students.html', students=students)
 
-@app.post("/<id>/delete/")
-def delete(id):
+@app.route("/instruments")
+def view_instruments():
+    instruments = list(instruments_collection.find())
+    return render_template('instruments.html', instruments=instruments)
+
+@app.post("/<id>/delete_student/")
+def delete_student(id):
     students_collection.delete_one({"_id": ObjectId(id)})
-    return redirect(url_for('index'))
+    return redirect(url_for('view_students'))
+
+@app.post("/<id>/delete_instrument/")
+def delete_instrument(id):
+    instruments_collection.delete_one({"_id": ObjectId(id)})
+    return redirect(url_for('view_instruments'))
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

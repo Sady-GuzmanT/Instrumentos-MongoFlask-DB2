@@ -72,7 +72,7 @@ button:hover {
     margin-top: 20px;
 }
 
-.result-card {
+.result-card, .instrument-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -81,11 +81,11 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.result-card p {
+.result-card p, .instrument-card p {
     margin: 5px 0;
 }
 
-.result-card p strong {
+.result-card p strong, .instrument-card p strong {
     color: #333;
 }
 
@@ -98,19 +98,6 @@ button:hover {
 .contracts h3, .requests h3 {
     margin-top: 0;
     color: #007bff;
-}
-
-/* Add a margin-top for the first student card */
-.student-card:first-child {
-    margin-top: 20px;
-}
-
-/* Style for the horizontal line */
-.horizontal-line {
-    border: none;
-    border-top: 2px solid #ccc;
-    margin-top: 10px; /* Adjust the spacing as needed */
-    margin-bottom: 10px; /* Adjust the spacing as needed */
 }
 
 /* Add styling for the "Details" button */
