@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>MongoDB Flask App</h1>
+    <hr>
+    <div class="content">
+        <form method="POST">
+            <p>
+                <b><label for="query">Enter MongoDB Query (as JSON)</label></b>
+            </p>
+            <p>
+                <input type="text" id="query" name="query" placeholder='{"key": "value"}' required>
+            </p>
+            <button type="submit">Execute Query</button>
+        </form>
+        
+        <a href="{{ url_for('view_students') }}"><button>Show All Students</button></a>
+        
+        <hr>
+        {% if error %}
+            <div class="error">
+                <p>Error: {{ error }}</p>
+            </div>
+        {% endif %}
+        {% if query_result %}
+            <div class="results">
+                <h2>Query Results:</h2>
+                {% for result in query_result %}
+                    <div class="result-card">
+                        <p><strong>RUT:</strong> {{ result.rut }}</p>
+                        <p><strong>Name:</strong> {{ result.nombreDePila }} {{ result.apellido1 }} {{ result.apellido2 }}</p>
+                        <!-- Add more fields as needed -->
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
