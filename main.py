@@ -8,18 +8,17 @@ import os
 
 app = Flask(__name__)
 
-# Replace with mongo db atlas string ---> .env
 # Load environment variables from .env file
 load_dotenv()
 # Retrieve the MongoDB URI from environment variables
 uri = os.getenv("mongo_srv")
-
 
 client = MongoClient(uri)
 db = client['instrumentos']
 students_collection = db['estudiantes']
 instruments_collection = db['instrumentos']
 teachers_collection = db['profesores']
+prestamos_collection = db['prestamosEventuales']
 
 def format_dates(result):
     for key, value in result.items():
@@ -29,7 +28,10 @@ def format_dates(result):
             for item in value:
                 format_dates(item)
         elif key.endswith('fechaOficializacion') or key.endswith('fechaSolicitud'):
-            result[key] = datetime.strptime(value['$date'], '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d')
+            if isinstance(value, dict) and '$date' in value:
+                result[key] = datetime.strptime(value['$date'], '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d')
+            elif isinstance(value, datetime):
+                result[key] = value.strftime('%Y-%m-%d')
     return result
 
 @app.route("/", methods=('GET', 'POST'))
@@ -62,6 +64,12 @@ def view_teachers():
     all_teachers = list(teachers_collection.find())
     return render_template('teachers.html', teachers=all_teachers)
 
+@app.route("/prestamosEventuales", methods=['GET'])
+def view_prestamos():
+    all_prestamos = list(prestamos_collection.find())
+    #all_prestamos = [format_dates(prestamo) for prestamo in all_prestamos]
+    return render_template('prestamos.html', prestamos=all_prestamos)
+
 @app.post("/<id>/delete/")
 def delete(id):
     students_collection.delete_one({"_id": ObjectId(id)})
@@ -74,3 +82,8 @@ def delete_instrument(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# @app.post("/loans/<id>/delete/")
+# def delete_loan(id):
+#     loans_collection.delete_one({"_id": ObjectId(id)})
+#     return redirect(url_for('view_loans'))

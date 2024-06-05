@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamos Eventuales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Prestamos Eventuales</h1>
+    <hr>
+    <div class="content">
+        {% for prestamo in prestamos %}
+            <div class="prestamo-card">
+                <h2> Prestamo </h2>
+                <p><strong>Num Serie Intrumento:</strong> {{ prestamo.numserieinst}}</p>
+                
+                <!-- Add other prestamo details here -->
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
