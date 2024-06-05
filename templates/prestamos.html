@@ -5,45 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestamos Eventuales</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".details-button").click(function() {
+                $(this).siblings(".details").slideToggle();
+            });
+        });
+    </script>
 </head>
 <body>
     <h1>Prestamos Eventuales</h1>
-    <hr>
     <div class="content">
         {% for prestamo in prestamos %}
             <div class="prestamo-card">
-                <h2>Prestamo</h2>
-                <p><strong>Num Serie Instrumento:</strong> {{ prestamo.numserieinst }}</p>
-                <p><strong>Rut Estudiante:</strong> {{ prestamo.rutest }}</p>
-                <p><strong>Rut Encargado:</strong> {{ prestamo.rutenc }}</p>
-                <p><strong>Fecha de Inicio:</strong> {{ prestamo.fechaInicio }}</p>
-                <p><strong>Fecha de Termino:</strong> {{ prestamo.fechaTermino }}</p>
+                <hr>
+                <h2>Prestamo - {{ prestamo.numserieinst }}</h2>
+                <button class="details-button">Details</button>
+                <div class="details">
+                    <div class="section-title">Información del Préstamo</div>
+                    <div class="section-content">
+                        <p><strong>Num Serie Instrumento:</strong> {{ prestamo.numserieinst }}</p>
+                        <p><strong>Fecha de Inicio:</strong> {{ prestamo.fechaInicio }}</p>
+                        <p><strong>Fecha de Termino:</strong> {{ prestamo.fechaTermino }}</p>
+                    </div>
 
-                {% if prestamo.encargado %}
-                <h3>Encargado</h3>
-                <p><strong>Nombre:</strong> {{ prestamo.encargado.nombreDePila }} {{ prestamo.encargado.apellido1 }} {{ prestamo.encargado.apellido2 }}</p>
-                {% endif %}
+                    <div class="section-title">Información del Encargado</div>
+                    <div class="section-content">
+                        <p><strong>Nombre:</strong> {{ prestamo.encargado.nombreDePila }} {{ prestamo.encargado.apellido1 }} {{ prestamo.encargado.apellido2 }}</p>
+                    </div>
 
-                {% if prestamo.estudiante %}
-                <h3>Estudiante</h3>
-                <p><strong>Nombre:</strong> {{ prestamo.estudiante.nombreDePila }} {{ prestamo.estudiante.apellido1 }} {{ prestamo.estudiante.apellido2 }}</p>
-                <p><strong>Carrera:</strong> {{ prestamo.estudiante.carrera }}</p>
-                <p><strong>Certificado AR:</strong> {{ prestamo.estudiante.certificadoAr }}</p>
-                <p><strong>Email:</strong> {{ prestamo.estudiante.email }}</p>
-                <p><strong>Teléfono:</strong> {{ prestamo.estudiante.telefono }}</p>
-                {% endif %}
+                    <div class="section-title">Información del Estudiante</div>
+                    <div class="section-content">
+                        <p><strong>Nombre:</strong> {{ prestamo.estudiante.nombreDePila }} {{ prestamo.estudiante.apellido1 }} {{ prestamo.estudiante.apellido2 }}</p>
+                        <p><strong>Carrera:</strong> {{ prestamo.estudiante.carrera }}</p>
+                        <p><strong>Email:</strong> {{ prestamo.estudiante.email }}</p>
+                        <p><strong>Teléfono:</strong> {{ prestamo.estudiante.telefono }}</p>
+                    </div>
 
-                {% if prestamo.instrumento %}
-                <h3>Instrumento</h3>
-                <p><strong>Nombre:</strong> {{ prestamo.instrumento.nombre }}</p>
-                <p><strong>Marca:</strong> {{ prestamo.instrumento.marca }}</p>
-                <p><strong>Estado:</strong> {{ prestamo.instrumento.estado }}</p>
-                <p><strong>Avalúo:</strong> {{ prestamo.instrumento.avaluo }}</p>
-                <p><strong>Número de Inventario:</strong> {{ prestamo.instrumento.numInventario }}</p>
-                <p><strong>Medidas:</strong> {{ prestamo.instrumento.medidas }}</p>
-                {% endif %}
+                    {% if prestamo.instrumento %}
+                        <div class="section-title">Información del Instrumento</div>
+                        <div class="section-content">
+                            <p><strong>Nombre:</strong> {{ prestamo.instrumento.nombre }}</p>
+                            <p><strong>Marca:</strong> {{ prestamo.instrumento.marca }}</p>
+                            <p><strong>Estado:</strong> {{ prestamo.instrumento.estado }}</p>
+                            <p><strong>Avaluo:</strong> {{ prestamo.instrumento.avaluo }}</p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-            <hr>
         {% endfor %}
     </div>
 </body>

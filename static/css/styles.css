@@ -144,3 +144,30 @@ button:hover {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* 
+.details {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+} */
+
+.prestamo-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+.section-content {
+    margin-left: 20px;
+}
