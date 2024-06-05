@@ -67,7 +67,7 @@ def view_teachers():
 @app.route("/prestamosEventuales", methods=['GET'])
 def view_prestamos():
     all_prestamos = list(prestamos_collection.find())
-    #all_prestamos = [format_dates(prestamo) for prestamo in all_prestamos]
+    all_prestamos = [format_dates(prestamo) for prestamo in all_prestamos]
     return render_template('prestamos.html', prestamos=all_prestamos)
 
 @app.post("/<id>/delete/")

@@ -12,11 +12,38 @@
     <div class="content">
         {% for prestamo in prestamos %}
             <div class="prestamo-card">
-                <h2> Prestamo </h2>
-                <p><strong>Num Serie Intrumento:</strong> {{ prestamo.numserieinst}}</p>
-                
-                <!-- Add other prestamo details here -->
+                <h2>Prestamo</h2>
+                <p><strong>Num Serie Instrumento:</strong> {{ prestamo.numserieinst }}</p>
+                <p><strong>Rut Estudiante:</strong> {{ prestamo.rutest }}</p>
+                <p><strong>Rut Encargado:</strong> {{ prestamo.rutenc }}</p>
+                <p><strong>Fecha de Inicio:</strong> {{ prestamo.fechaInicio }}</p>
+                <p><strong>Fecha de Termino:</strong> {{ prestamo.fechaTermino }}</p>
+
+                {% if prestamo.encargado %}
+                <h3>Encargado</h3>
+                <p><strong>Nombre:</strong> {{ prestamo.encargado.nombreDePila }} {{ prestamo.encargado.apellido1 }} {{ prestamo.encargado.apellido2 }}</p>
+                {% endif %}
+
+                {% if prestamo.estudiante %}
+                <h3>Estudiante</h3>
+                <p><strong>Nombre:</strong> {{ prestamo.estudiante.nombreDePila }} {{ prestamo.estudiante.apellido1 }} {{ prestamo.estudiante.apellido2 }}</p>
+                <p><strong>Carrera:</strong> {{ prestamo.estudiante.carrera }}</p>
+                <p><strong>Certificado AR:</strong> {{ prestamo.estudiante.certificadoAr }}</p>
+                <p><strong>Email:</strong> {{ prestamo.estudiante.email }}</p>
+                <p><strong>Teléfono:</strong> {{ prestamo.estudiante.telefono }}</p>
+                {% endif %}
+
+                {% if prestamo.instrumento %}
+                <h3>Instrumento</h3>
+                <p><strong>Nombre:</strong> {{ prestamo.instrumento.nombre }}</p>
+                <p><strong>Marca:</strong> {{ prestamo.instrumento.marca }}</p>
+                <p><strong>Estado:</strong> {{ prestamo.instrumento.estado }}</p>
+                <p><strong>Avalúo:</strong> {{ prestamo.instrumento.avaluo }}</p>
+                <p><strong>Número de Inventario:</strong> {{ prestamo.instrumento.numInventario }}</p>
+                <p><strong>Medidas:</strong> {{ prestamo.instrumento.medidas }}</p>
+                {% endif %}
             </div>
+            <hr>
         {% endfor %}
     </div>
 </body>
