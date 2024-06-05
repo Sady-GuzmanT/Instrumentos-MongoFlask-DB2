@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Students</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        /* Add CSS styles for the collapsible content */
-        .details {
-            display: none;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-            margin-top: 10px;
-        }
-    </style>
+
 </head>
 <body>
     <h1>All Students</h1>
@@ -23,7 +15,8 @@
             <div class="student-card">
                 <hr class="horizontal-line">
                 <h2>{{ student.nombreDePila }} {{ student.apellido1 }} {{ student.apellido2 }}</h2>
-                <div class="toggle-details" onclick="toggleDetails(this)">Details</div>
+                <!-- Use button element for details toggle -->
+                <button class="details-button" onclick="toggleDetails(this)">Details</button>
                 <div class="details">
                     <p><strong>RUT:</strong> {{ student.rut }}</p>
                     <p><strong>Carrera:</strong> {{ student.carrera }}</p>
