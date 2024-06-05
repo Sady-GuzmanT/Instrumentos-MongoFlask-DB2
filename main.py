@@ -67,5 +67,10 @@ def delete(id):
     students_collection.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
 
+@app.post("/instruments/<id>/delete/")
+def delete_instrument(id):
+    instruments_collection.delete_one({"_id": ObjectId(id)})
+    return redirect(url_for('view_instruments'))
+
 if __name__ == "__main__":
     app.run(debug=True)
