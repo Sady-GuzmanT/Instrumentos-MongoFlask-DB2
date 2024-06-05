@@ -13,6 +13,6 @@
 
 ---
 
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante.png) <br>
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_instrumentos.png) <br>
 ![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante2.png) <br>
-
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante.png) <br>
