@@ -10,40 +10,55 @@
     <h1>MongoDB Flask App</h1>
     <hr>
     <div class="content">
-        <form method="POST">
-            <p>
-                <b><label for="query">Enter MongoDB Query (as JSON)</label></b>
-            </p>
-            <p>
-                <input type="text" id="query" name="query" placeholder='{"key": "value"}' required>
-            </p>
-            <button type="submit">Execute Query</button>
+        <form method="post">
+            <label for="query">Enter MongoDB Query (JSON format):</label>
+            <input type="text" name="query" id="query">
+            <button type="submit">Submit</button>
         </form>
-        
-        <a href="{{ url_for('view_students') }}"><button>Show All Students</button></a>
-        </a>
-        <a href="{{ url_for('view_instruments') }}">
-            <button>View Instruments</button>
-        </a>
-        
-        <hr>
+        <a href="{{ url_for('view_students') }}" class="button-link">View All Students</a>
+        <a href="{{ url_for('view_instruments') }}" class="button-link">View All Instruments</a>
+        <a href="{{ url_for('view_teachers') }}" class="button-link">View All Teachers</a>
         {% if error %}
-            <div class="error">
-                <p>Error: {{ error }}</p>
-            </div>
+            <div class="error">{{ error }}</div>
         {% endif %}
-        {% if query_result %}
-            <div class="results">
-                <h2>Query Results:</h2>
+        <div class="results">
+            {% if query_result %}
                 {% for result in query_result %}
                     <div class="result-card">
+                        <p><strong>Nombre:</strong> {{ result.nombreDePila }} {{ result.apellido1 }} {{ result.apellido2 }}</p>
                         <p><strong>RUT:</strong> {{ result.rut }}</p>
-                        <p><strong>Name:</strong> {{ result.nombreDePila }} {{ result.apellido1 }} {{ result.apellido2 }}</p>
-                        <!-- Add more fields as needed -->
+                        <p><strong>Email:</strong> {{ result.email }}</p>
+                        <p><strong>Teléfono:</strong> {{ result.telefono }}</p>
+                        <p><strong>Carrera:</strong> {{ result.carrera }}</p>
+                        <p><strong>Fecha de Oficialización:</strong> {{ result.fechaOficializacion }}</p>
+                        <p><strong>Certificado AR:</strong> {{ result.certificadoAr }}</p>
+                        <form method="post" action="{{ url_for('delete', id=result._id['$oid']) }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                        {% if result.contracts %}
+                            <div class="contracts">
+                                <h3>Contracts</h3>
+                                {% for contract in result.contracts %}
+                                    <p><strong>ID:</strong> {{ contract._id }}</p>
+                                    <p><strong>Fecha de Firma:</strong> {{ contract.fechaFirma }}</p>
+                                    <p><strong>Vigencia:</strong> {{ contract.vigencia }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if result.requests %}
+                            <div class="requests">
+                                <h3>Requests</h3>
+                                {% for request in result.requests %}
+                                    <p><strong>ID:</strong> {{ request._id }}</p>
+                                    <p><strong>Fecha de Solicitud:</strong> {{ request.fechaSolicitud }}</p>
+                                    <p><strong>Estado:</strong> {{ request.estado }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>

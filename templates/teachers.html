@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".details-button").click(function() {
+                $(this).siblings(".details").slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Teachers</h1>
+    <div class="content">
+        {% for teacher in teachers %}
+            <div class="teacher-card">
+                <hr>
+                <h2>{{ teacher.nombreDePila }} {{ teacher.apellido1 }} {{ teacher.apellido2 }}</h2>
+                <button class="details-button">Details</button>
+                <div class="details" style="display: none;">
+                    <p><strong>RUT:</strong> {{ teacher.rut }}</p>
+                    {% for catedra in teacher.catedras %}
+                        <div class="catedra">
+                            <p><strong>Clases:</strong> {{ catedra.clases | join(", ") }}</p>
+                            <div class="student-info">
+                                <p><strong>Estudiante:</strong> {{ catedra.estudiante.nombreDePila }} {{ catedra.estudiante.apellido1 }} {{ catedra.estudiante.apellido2 }}</p>
+                                <p><strong>Carrera:</strong> {{ catedra.estudiante.carrera }}</p>
+                                <p><strong>Certificado AR:</strong> {{ catedra.estudiante.certificadoAr }}</p>
+                                <p><strong>Email:</strong> {{ catedra.estudiante.email }}</p>
+                                <p><strong>Teléfono:</strong> {{ catedra.estudiante.telefono }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

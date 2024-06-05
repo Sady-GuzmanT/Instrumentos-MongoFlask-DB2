@@ -19,6 +19,7 @@ client = MongoClient(uri)
 db = client['instrumentos']
 students_collection = db['estudiantes']
 instruments_collection = db['instrumentos']
+teachers_collection = db['profesores']
 
 def format_dates(result):
     for key, value in result.items():
@@ -46,26 +47,25 @@ def index():
     
     return render_template('index.html', query_result=query_result, error=error)
 
-@app.route("/students")
+@app.route("/students", methods=('GET', 'POST'))
 def view_students():
-    students = list(students_collection.find())
-    return render_template('students.html', students=students)
+    all_students = list(students_collection.find())
+    return render_template('students.html', students=all_students)
 
-@app.route("/instruments")
+@app.route("/instruments", methods=('GET', 'POST'))
 def view_instruments():
-    instruments = list(instruments_collection.find())
-    return render_template('instruments.html', instruments=instruments)
+    all_instruments = list(instruments_collection.find())
+    return render_template('instruments.html', instruments=all_instruments)
 
-@app.post("/<id>/delete_student/")
-def delete_student(id):
+@app.route("/teachers", methods=('GET', 'POST'))
+def view_teachers():
+    all_teachers = list(teachers_collection.find())
+    return render_template('teachers.html', teachers=all_teachers)
+
+@app.post("/<id>/delete/")
+def delete(id):
     students_collection.delete_one({"_id": ObjectId(id)})
-    return redirect(url_for('view_students'))
-
-@app.post("/<id>/delete_instrument/")
-def delete_instrument(id):
-    instruments_collection.delete_one({"_id": ObjectId(id)})
-    return redirect(url_for('view_instruments'))
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)
-    

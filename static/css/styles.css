@@ -62,6 +62,23 @@ button:hover {
     background-color: #0056b3;
 }
 
+.button-link {
+    background-color: #28a745;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin: 10px;
+}
+
+.button-link:hover {
+    background-color: #218838;
+}
+
 .error {
     color: red;
     text-align: center;
@@ -72,7 +89,7 @@ button:hover {
     margin-top: 20px;
 }
 
-.result-card, .instrument-card {
+.result-card, .teacher-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -81,15 +98,15 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.result-card p, .instrument-card p {
+.result-card p, .teacher-card p {
     margin: 5px 0;
 }
 
-.result-card p strong, .instrument-card p strong {
+.result-card p strong, .teacher-card p strong {
     color: #333;
 }
 
-.contracts, .requests {
+.contracts, .requests, .catedra {
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid #ddd;
@@ -100,18 +117,30 @@ button:hover {
     color: #007bff;
 }
 
-/* Add styling for the "Details" button */
-.toggle-details {
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-align: center;
-    width: 80px; /* Adjust width as needed */
-    margin-bottom: 10px;
+.details {
+    display: none;
 }
 
-.toggle-details:hover {
-    background-color: #0056b3;
+.details-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.details-button:hover {
+    background-color: #5a6268;
+}
+
+.teacher-card {
+    margin-bottom: 40px; /* Extra space between teachers */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
