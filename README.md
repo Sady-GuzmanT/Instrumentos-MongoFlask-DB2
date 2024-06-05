@@ -1,7 +1,7 @@
 # Instrumentos-MongoFlask-DB2
 
 #### Total Mess of a Web App <br>
-#### Uses: Python + Flask + PyMongo + Free Mongo Cluster + Dotenv + Docker<br>
+#### Uses: Python + Flask + Jquery + PyMongo + Mongo Cluster + Dotenv! + Docker<br>
 <br>
 
 #### Sistema de Informacion para asignatura Base de Datos 2. Migracion BD1 - Central de Instrumentos ULS
