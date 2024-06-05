@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Students</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>All Students</h1>
@@ -16,7 +16,7 @@
                 <hr class="horizontal-line">
                 <h2>{{ student.nombreDePila }} {{ student.apellido1 }} {{ student.apellido2 }}</h2>
                 <!-- Use button element for details toggle -->
-                <button class="details-button" onclick="toggleDetails(this)">Details</button>
+                <button class="details-button">Details</button>
                 <div class="details">
                     <p><strong>RUT:</strong> {{ student.rut }}</p>
                     <p><strong>Carrera:</strong> {{ student.carrera }}</p>
@@ -63,16 +63,11 @@
     </div>
 
     <script>
-        function toggleDetails(element) {
-            // Get the next sibling element, which is the details div
-            var details = element.nextElementSibling;
-            // Toggle the display property of the details div
-            if (details.style.display === "block") {
-                details.style.display = "none";
-            } else {
-                details.style.display = "block";
-            }
-        }
+        $(document).ready(function() {
+            $(".details-button").click(function() {
+                $(this).siblings(".details").slideToggle();
+            });
+        });
     </script>
 </body>
 </html>

@@ -205,3 +205,36 @@ button:hover {
 .horizontal-line {
     margin-top: 0;
 }
+
+.instrument-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.instrument-card h2 {
+    color: black; /* Black color for the title */
+}
+
+.instrument-card button.toggle-details {
+    background-color: #007bff; /* Blue background color for the button */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.instrument-details {
+    display: none; /* Hide details by default */
+}
+
+.instrument-details p {
+    margin-left: 20px; /* Indent details */
+}

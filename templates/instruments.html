@@ -6,6 +6,46 @@
     <title>Instruments</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Add CSS styles for the collapsible content */
+        .instrument-details {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        /* Add styles for the details button */
+        .toggle-details {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .toggle-details:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add styles for the instrument card */
+        .instrument-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .instrument-card h2 {
+            color: black; /* Black color for the title */
+        }
+
+        .instrument-details p {
+            margin-left: 20px; /* Indent details */
+        }
+    </style>
 </head>
 <body>
     <h1>Instruments</h1>
@@ -14,8 +54,9 @@
         {% for instrument in instruments %}
             <div class="instrument-card">
                 <h2>{{ instrument.nombre }}</h2>
+                <!-- Use button element for details toggle -->
                 <button class="toggle-details">Details</button>
-                <div class="instrument-details" style="display:none;">
+                <div class="instrument-details">
                     <p><strong>Num Serie:</strong> {{ instrument.numSerie }}</p>
                     <p><strong>Avaluo:</strong> {{ instrument.avaluo }}</p>
                     <p><strong>Estado:</strong> {{ instrument.estado }}</p>
@@ -32,7 +73,7 @@
     <script>
         $(document).ready(function(){
             $('.toggle-details').click(function(){
-                $(this).next('.instrument-details').toggle();
+                $(this).next('.instrument-details').slideToggle();
             });
         });
     </script>
