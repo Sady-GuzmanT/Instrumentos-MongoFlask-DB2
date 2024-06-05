@@ -17,6 +17,8 @@
                 <h2>{{ student.nombreDePila }} {{ student.apellido1 }} {{ student.apellido2 }}</h2>
                 <!-- Use button element for details toggle -->
                 <button class="details-button">Details</button>
+                <!-- Add a form for delete button -->
+                
                 <div class="details">
                     <p><strong>RUT:</strong> {{ student.rut }}</p>
                     <p><strong>Carrera:</strong> {{ student.carrera }}</p>
@@ -55,6 +57,12 @@
                             </ul>
                         </div>
                     {% endif %}
+
+                    <form method="POST" action="{{ url_for('delete_student', id=student['_id']) }}">
+                        <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                    
+
                 </div>
             </div>
         {% endfor %}

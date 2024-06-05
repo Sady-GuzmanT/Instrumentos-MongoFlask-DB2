@@ -80,6 +80,14 @@ def delete_instrument(id):
     instruments_collection.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('view_instruments'))
 
+@app.route("/students/<id>/delete/", methods=['POST'])
+def delete_student(id):
+    students_collection.delete_one({"_id": ObjectId(id)})
+    return redirect(url_for('view_students'))
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

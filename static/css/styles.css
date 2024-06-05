@@ -238,3 +238,17 @@ button:hover {
 .instrument-details p {
     margin-left: 20px; /* Indent details */
 }
+
+.delete-button {
+    padding: 5px 10px; /* Adjust padding to make the button smaller */
+    background-color: #888; /* Set grey background color */
+    color: #fff; /* Set text color to white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #555; /* Darken the background color on hover */
+}
