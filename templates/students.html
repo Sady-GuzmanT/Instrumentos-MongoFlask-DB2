@@ -10,10 +10,27 @@
         .form-container {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
 
-        .form-container form {
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .form-group label {
             margin-right: 10px;
+        }
+
+        .form-group input {
+            width: 800px; /* Adjusted width for the RUT input field */
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .form-group button {
+            padding: 5px 10px;
         }
     </style>
 </head>
@@ -23,9 +40,9 @@
     <div class="content">
         <div class="form-container">
             <!-- Search form -->
-            <form method="post" action="{{ url_for('view_students') }}">
+            <form method="post" action="{{ url_for('view_students') }}" class="form-group">
                 <label for="query">Search by RUT:</label>
-                <input type="text" name="query" id="query" placeholder="Enter RUT">
+                <input type="text" name="query" id="query">
                 <button type="submit">Search</button>
             </form>
             <!-- End of search form -->
@@ -36,18 +53,67 @@
             </form>
             <!-- End of Show All button -->
         </div>
-
-        <!-- Student cards -->
+        
         {% for student in students %}
             <div class="student-card">
                 <hr class="horizontal-line">
-                <!-- Student details -->
+                <h2>{{ student.nombreDePila }} {{ student.apellido1 }} {{ student.apellido2 }}</h2>
+                <!-- Use button element for details toggle -->
+                <button class="details-button">Details</button>
+                <div class="details">
+                    <p><strong>RUT:</strong> {{ student.rut }}</p>
+                    <p><strong>Carrera:</strong> {{ student.carrera }}</p>
+                    <p><strong>Certificado AR:</strong> {{ student.certificadoAr }}</p>
+                    <p><strong>Email:</strong> {{ student.email }}</p>
+                    <p><strong>Teléfono:</strong> {{ student.telefono }}</p>
+                    {% if student.contratosOficializados %}
+                        <div class="contracts">
+                            <h3>Contratos Oficializados:</h3>
+                            <ul>
+                                {% for contract in student.contratosOficializados %}
+                                    <li>
+                                        <p><strong>Código de Contrato:</strong> {{ contract.codigocontrato }}</p>
+                                        <p><strong>Fecha de Oficialización:</strong> {{ contract.fechaOficializacion }}</p>
+                                        <p><strong>Profesor:</strong> {{ contract.profesor.nombreDePila }} {{ contract.profesor.apellido1 }} {{ contract.profesor.apellido2 }}</p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if student.solicitudes %}
+                        <div class="requests">
+                            <h3>Solicitudes:</h3>
+                            <ul>
+                                {% for solicitud in student.solicitudes %}
+                                    <li>
+                                        <p><strong>Número de Serie del Instrumento:</strong> {{ solicitud.numserieinst }}</p>
+                                        <p><strong>Tipo de Préstamo:</strong> {{ solicitud.tipoDePrestamo }}</p>
+                                        <p><strong>Fecha de Solicitud:</strong> {{ solicitud.fechaSolicitud }}</p>
+                                        <p><strong>Estado de la Solicitud:</strong> {{ solicitud.estadoSolicitud }}</p>
+                                        <p><strong>Instrumento:</strong> {{ solicitud.instrumento.nombre }}</p>
+                                        <p><strong>Marca:</strong> {{ solicitud.instrumento.marca }}</p>
+                                        <p><strong>Estado del Instrumento:</strong> {{ solicitud.instrumento.estado }}</p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+                <form method="post" action="{{ url_for('delete_student', id=student._id) }}">
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         {% endfor %}
-        <!-- End of student cards -->
-
         <hr>
         <a href="/">Back to Index</a>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".details-button").click(function() {
+                $(this).siblings(".details").slideToggle();
+            });
+        });
+    </script>
 </body>
 </html>

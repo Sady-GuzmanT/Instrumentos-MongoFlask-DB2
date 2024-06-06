@@ -92,6 +92,18 @@ def delete_student(id):
     students_collection.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('view_students'))
 
+# @app.route("/students/search_by_carrera", methods=['POST'])
+# def view_students_by_carrera():
+#     carrera = request.form.get('carrera')
+#     if carrera:
+#         query_result = list(students_collection.find({"carrera": carrera}))
+#         query_result = [format_dates(result) for result in query_result]
+#         return render_template('students.html', students=query_result)
+#     else:
+#         error = "Please enter a carrera to search for."
+#         return render_template('students.html', students=[], error=error)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
