@@ -9,10 +9,13 @@
 ---
 
 ## DOCKER IMAGE
-
-#### $ sudo docker pull matiasrgt/instrumentos_v4<br>
-#### $ sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4<br>
-
+Pull & Run commands:<br>
+```bash
+sudo docker pull matiasrgt/instrumentos_v4
+```
+```bash
+sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4
+```
 #### https://hub.docker.com/r/matiasrgt/instrumentos_v4
 ---
 
