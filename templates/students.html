@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-    <h1>All Students</h1>
+    <h1>Estudiantes</h1>
     <hr>
     <div class="content">
         <div class="form-container">
@@ -52,13 +52,13 @@
             <form method="post" action="{{ url_for('view_students') }}" class="form-group">
                 <label for="query">Search by RUT:</label>
                 <input type="text" name="query" id="query">
-                <button type="submit">Search</button>
+                <button type="submit">Buscar</button>
             </form>
             <!-- End of search form -->
 
             <!-- Show All button -->
             <form method="get" action="{{ url_for('view_students') }}" class="show-all-button">
-                <button type="submit">Show All</button>
+                <button type="submit">Mostrar Todos</button>
             </form>
             <!-- End of Show All button -->
         </div>
@@ -68,7 +68,7 @@
                 <hr class="horizontal-line">
                 <h2>{{ student.nombreDePila }} {{ student.apellido1 }} {{ student.apellido2 }}</h2>
                 <!-- Use button element for details toggle -->
-                <button class="details-button">Details</button>
+                <button class="details-button">Detalles</button>
                 <div class="details">
                     <p><strong>RUT:</strong> {{ student.rut }}</p>
                     <p><strong>Carrera:</strong> {{ student.carrera }}</p>
@@ -108,7 +108,7 @@
                         </div>
                     {% endif %}
                     <form method="post" action="{{ url_for('delete_student', id=student._id) }}">
-                        <button type="submit">Delete</button>
+                        <button type="submit">Eliminar</button>
                     </form>
                 </div>
             </div>

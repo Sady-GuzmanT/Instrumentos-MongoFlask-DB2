@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instruments</title>
+    <title>Instrumentos</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -63,14 +63,14 @@
     </style>
 </head>
 <body>
-    <h1>Instruments</h1>
+    <h1>Instrumentos</h1>
     <hr>
     <div class="content">
         <!-- Add a form for the combo box and search button -->
         <form method="POST" action="{{ url_for('view_instruments') }}" class="search-form">
-            <label for="instrument_name">Choose an instrument:</label>
+            <label for="instrument_name">Tipo Instrumento:</label>
             <select name="instrument_name" id="instrument_name">
-                <option value="">All</option>
+                <option value="">Todos</option>
                 <option value="Viola">Viola</option>
                 <option value="Guitarra">Guitarra</option>
                 <option value="Baritono">Barítono</option>
@@ -83,23 +83,23 @@
                 <option value="Trompeta">Trompeta</option>
             </select>
             
-            <button type="submit">Search</button>
+            <button type="submit">Buscar</button>
         </form>
         <hr>
         {% for instrument in instruments %}
             <div class="instrument-card">
                 <h2>{{ instrument.nombre }} - Serie: {{ instrument.numSerie }}</h2>
                 <!-- Use button element for details toggle -->
-                <button class="toggle-details">Details</button>
+                <button class="toggle-details">Detalles</button>
                 <div class="instrument-details">
                     <p><strong>Num Serie:</strong> {{ instrument.numSerie }}</p>
-                    <p><strong>Avaluo:</strong> {{ instrument.avaluo }}</p>
+                    <p><strong>Avaluo:</strong> ${{ instrument.avaluo }}</p>
                     <p><strong>Estado:</strong> {{ instrument.estado }}</p>
                     <p><strong>Marca:</strong> {{ instrument.marca }}</p>
                     <p><strong>Medidas:</strong> {{ instrument.medidas }}</p>
                     <p><strong>Num Inventario:</strong> {{ instrument.numInventario }}</p>
                     <form method="POST" action="{{ url_for('delete_instrument', id=instrument['_id']) }}">
-                        <input type="submit" value="Delete Instrument" onclick="return confirm('Are you sure you want to delete this instrument?')"/>
+                        <input type="submit" value="Borrar instrumento" onclick="return confirm('Are you sure you want to delete this instrument?')"/>
                     </form>
                 </div>
             </div>

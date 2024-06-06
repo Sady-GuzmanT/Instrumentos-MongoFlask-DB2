@@ -15,13 +15,13 @@
     </script>
 </head>
 <body>
-    <h1>Teachers</h1>
+    <h1>Profesores</h1>
     <div class="content">
         {% for teacher in teachers %}
             <div class="teacher-card">
                 <hr>
                 <h2>{{ teacher.nombreDePila }} {{ teacher.apellido1 }} {{ teacher.apellido2 }}</h2>
-                <button class="details-button">Details</button>
+                <button class="details-button">Detalles</button>
                 <div class="details" style="display: none;">
                     <p><strong>RUT:</strong> {{ teacher.rut }}</p>
                     {% for catedra in teacher.catedras %}
