@@ -8,8 +8,8 @@
 
 ---
 
-#### $ sudo docker pull matiasrgt/instrumentos_v1 or 2<br>
-#### $ sudo docker run -p 5000:5000 matiasrgt/instrumentos_v1 or 2<br>
+#### $ sudo docker pull matiasrgt/instrumentos_v4<br>
+#### $ sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4<br>
 
 ---
 
