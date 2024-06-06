@@ -13,6 +13,13 @@
 
 ---
 
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_instrumentos.png) <br>
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante2.png) <br>
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante.png) <br>
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_colecciones.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_index.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_estudiantes.png) <br>
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_estudiante_detalles.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_instrumentos2.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_docker.png) <br>
