@@ -41,6 +41,13 @@
         .details {
             display: none;
         }
+
+        .form-container form {
+            display: flex;
+            align-items: center;
+            flex-direction: row; /* Remove this line */
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -50,12 +57,13 @@
         <div class="form-container">
             <!-- Search form -->
             <form method="post" action="{{ url_for('view_students') }}" class="form-group">
-                <label for="query">Search by RUT:</label>
+                <label for="query">Buscar por RUT:</label>
                 <input type="text" name="query" id="query">
                 <button type="submit">Buscar</button>
             </form>
             <!-- End of search form -->
-
+        </div>
+        <div class="form-container">
             <!-- Show All button -->
             <form method="get" action="{{ url_for('view_students') }}" class="show-all-button">
                 <button type="submit">Mostrar Todos</button>
