@@ -53,10 +53,22 @@ def view_students():
         all_students = list(students_collection.find())
         return render_template('students.html', students=all_students)
 
+# @app.route("/instruments", methods=('GET', 'POST'))
+# def view_instruments():
+#     all_instruments = list(instruments_collection.find())
+#     return render_template('instruments.html', instruments=all_instruments)
+
 @app.route("/instruments", methods=('GET', 'POST'))
 def view_instruments():
-    all_instruments = list(instruments_collection.find())
-    return render_template('instruments.html', instruments=all_instruments)
+    if request.method == 'POST':
+        instrument_name = request.form.get('instrument_name')
+        if instrument_name:
+            instruments = list(instruments_collection.find({"nombre": instrument_name}))
+        else:
+            instruments = list(instruments_collection.find())
+    else:
+        instruments = list(instruments_collection.find())
+    return render_template('instruments.html', instruments=instruments)
 
 @app.route("/teachers", methods=('GET', 'POST'))
 def view_teachers():

@@ -45,15 +45,50 @@
         .instrument-details p {
             margin-left: 20px; /* Indent details */
         }
+
+        /* Add styles for the search form */
+        .search-form {
+            margin-bottom: 20px;
+        }
+
+        .search-form label {
+            margin-right: 10px;
+        }
+
+        .search-form select,
+        .search-form button {
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Instruments</h1>
     <hr>
     <div class="content">
+        <!-- Add a form for the combo box and search button -->
+        <form method="POST" action="{{ url_for('view_instruments') }}" class="search-form">
+            <label for="instrument_name">Choose an instrument:</label>
+            <select name="instrument_name" id="instrument_name">
+                <option value="">All</option>
+                <option value="Viola">Viola</option>
+                <option value="Guitarra">Guitarra</option>
+                <option value="Baritono">Barítono</option>
+                <option value="Clarinete">Clarinete</option>
+                <option value="Violin">Violín</option>
+                <option value="Trombon">Trombón</option>
+                <option value="Tuba">Tuba</option>
+                <option value="Corno">Corno</option>
+                <option value="Violoncello">Violoncello</option>
+                <option value="Trompeta">Trompeta</option>
+            </select>
+            
+            <button type="submit">Search</button>
+        </form>
+        <hr>
         {% for instrument in instruments %}
             <div class="instrument-card">
-                <h2>{{ instrument.nombre }}</h2>
+                <h2>{{ instrument.nombre }} - Serie: {{ instrument.numSerie }}</h2>
                 <!-- Use button element for details toggle -->
                 <button class="toggle-details">Details</button>
                 <div class="instrument-details">
