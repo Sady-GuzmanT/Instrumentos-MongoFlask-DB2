@@ -9,6 +9,7 @@
     <style>
         .form-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             margin-bottom: 10px;
         }
@@ -16,7 +17,7 @@
         .form-group {
             display: flex;
             align-items: center;
-            margin-right: 20px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
@@ -24,13 +25,17 @@
         }
 
         .form-group input {
-            width: 800px; /* Adjusted width for the RUT input field */
+            width: 900px; /* Ajusta  ancho de barra de busqueda */
             padding: 5px;
             margin-right: 10px;
         }
 
         .form-group button {
             padding: 5px 10px;
+        }
+
+        .show-all-button {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -48,7 +53,7 @@
             <!-- End of search form -->
 
             <!-- Show All button -->
-            <form method="get" action="{{ url_for('view_students') }}">
+            <form method="get" action="{{ url_for('view_students') }}" class="show-all-button">
                 <button type="submit">Show All</button>
             </form>
             <!-- End of Show All button -->
