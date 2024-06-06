@@ -52,15 +52,11 @@ def index():
 @app.route("/students", methods=('GET', 'POST'))
 def view_students():
     if request.method == 'POST':
-        query_str = request.form['query']
-        try:
-            query = json.loads(query_str)
-            query_result = list(students_collection.find(query))
-            query_result = [format_dates(result) for result in query_result]
-            return render_template('students.html', students=query_result)
-        except Exception as e:
-            error = str(e)
-            return render_template('students.html', students=[], error=error)
+        query_rut = request.form['query']
+        # Assuming 'rut' is the key in your MongoDB documents
+        query_result = students_collection.find({"rut": query_rut})
+        # Process the query result as needed
+        return render_template('students.html', students=query_result)
     else:
         all_students = list(students_collection.find())
         return render_template('students.html', students=all_students)
@@ -99,3 +95,6 @@ def delete_student(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
