@@ -6,18 +6,30 @@
     <title>All Students</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .form-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-container form {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>All Students</h1>
     <hr>
     <div class="content">
-        <!-- Search form -->
-        <form method="post" action="{{ url_for('view_students') }}">
-            <label for="query">Search by RUT:</label>
-            <input type="text" name="query" id="query">
-            <button type="submit">Search</button>
-        </form>
-        <!-- End of search form -->
+        <div class="form-container">
+            <!-- Search form -->
+            <form method="post" action="{{ url_for('view_students') }}">
+                <label for="query">Search by RUT:</label>
+                <input type="text" name="query" id="query">
+                <button type="submit">Search</button>
+            </form>
+            <!-- End of search form -->
+        </div>
 
         <!-- Show All button -->
         <form method="get" action="{{ url_for('view_students') }}">
