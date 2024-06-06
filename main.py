@@ -51,8 +51,19 @@ def index():
 
 @app.route("/students", methods=('GET', 'POST'))
 def view_students():
-    all_students = list(students_collection.find())
-    return render_template('students.html', students=all_students)
+    if request.method == 'POST':
+        query_str = request.form['query']
+        try:
+            query = json.loads(query_str)
+            query_result = list(students_collection.find(query))
+            query_result = [format_dates(result) for result in query_result]
+            return render_template('students.html', students=query_result)
+        except Exception as e:
+            error = str(e)
+            return render_template('students.html', students=[], error=error)
+    else:
+        all_students = list(students_collection.find())
+        return render_template('students.html', students=all_students)
 
 @app.route("/instruments", methods=('GET', 'POST'))
 def view_instruments():
@@ -86,12 +97,5 @@ def delete_student(id):
     return redirect(url_for('view_students'))
 
 
-
-
 if __name__ == "__main__":
     app.run(debug=True)
-
-# @app.post("/loans/<id>/delete/")
-# def delete_loan(id):
-#     loans_collection.delete_one({"_id": ObjectId(id)})
-#     return redirect(url_for('view_loans'))
