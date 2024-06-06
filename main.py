@@ -36,27 +36,19 @@ def format_dates(result):
 
 @app.route("/", methods=('GET', 'POST'))
 def index():
-    query_result = None
-    error = None
-    if request.method == 'POST':
-        query_str = request.form['query']
-        try:
-            query = json.loads(query_str)
-            query_result = list(students_collection.find(query))
-            query_result = [format_dates(result) for result in query_result]
-        except Exception as e:
-            error = str(e)
-    
-    return render_template('index.html', query_result=query_result, error=error)
+    return render_template('index.html')
 
 @app.route("/students", methods=('GET', 'POST'))
 def view_students():
     if request.method == 'POST':
-        query_rut = request.form['query']
-        # Assuming 'rut' is the key in your MongoDB documents
-        query_result = students_collection.find({"rut": query_rut})
-        # Process the query result as needed
-        return render_template('students.html', students=query_result)
+        query_str = request.form.get('query')
+        if query_str:
+            query = {"rut": query_str}
+            query_result = list(students_collection.find(query))
+            query_result = [format_dates(result) for result in query_result]
+            return render_template('students.html', students=query_result)
+        else:
+            return render_template('students.html', students=[])
     else:
         all_students = list(students_collection.find())
         return render_template('students.html', students=all_students)
@@ -80,7 +72,7 @@ def view_prestamos():
 @app.post("/<id>/delete/")
 def delete(id):
     students_collection.delete_one({"_id": ObjectId(id)})
-    return redirect(url_for('index'))
+    return redirect(url_for('view_students'))
 
 @app.post("/instruments/<id>/delete/")
 def delete_instrument(id):
@@ -92,21 +84,5 @@ def delete_student(id):
     students_collection.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('view_students'))
 
-# @app.route("/students/search_by_carrera", methods=['POST'])
-# def view_students_by_carrera():
-#     carrera = request.form.get('carrera')
-#     if carrera:
-#         query_result = list(students_collection.find({"carrera": carrera}))
-#         query_result = [format_dates(result) for result in query_result]
-#         return render_template('students.html', students=query_result)
-#     else:
-#         error = "Please enter a carrera to search for."
-#         return render_template('students.html', students=[], error=error)
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
