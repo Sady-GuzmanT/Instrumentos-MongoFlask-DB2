@@ -8,10 +8,14 @@
 
 ---
 
+## DOCKER IMAGE
+
 #### $ sudo docker pull matiasrgt/instrumentos_v4<br>
 #### $ sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4<br>
 
 ---
+
+## SCREENSHOTS
 
 ![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_colecciones.png) <br>
 
