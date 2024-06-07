@@ -8,11 +8,26 @@
 
 ---
 
-#### $ sudo docker pull matiasrgt/instrumentos_v4<br>
-#### $ sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4<br>
-
+## DOCKER IMAGE
+Pull & Run commands:<br>
+```bash
+sudo docker pull matiasrgt/instrumentos_v4
+```
+```bash
+sudo docker run -p 5000:5000 matiasrgt/instrumentos_v4
+```
+#### https://hub.docker.com/r/matiasrgt/instrumentos_v4
 ---
 
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_instrumentos.png) <br>
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante2.png) <br>
-![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/vista_estudiante.png) <br>
+## SCREENSHOTS
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_colecciones.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_index.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_estudiantes.png) <br>
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_estudiante_detalles.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_instrumentos2.png) <br>
+
+![Alt text](https://github.com/MatiasRGT/img_resources/blob/main/DB2/db2_docker.png) <br>
