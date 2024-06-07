@@ -2,9 +2,8 @@
 
 #### Total Mess of a Web App for college assignment<br>
 #### Uses: Python + Flask + Jquery + PyMongo + Mongo Cluster + Dotenv! + Docker<br>
-<br>
 
-#### Sistema de Informacion para asignatura Base de Datos 2. Migracion BD1 - Central de Instrumentos ULS
+#### Base de Datos 2. Migracion BD1 - Central de Instrumentos ULS
 
 ---
 
