@@ -145,7 +145,7 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 
+/* DETALLES otra vez
 .details {
     display: none;
     padding: 10px;
@@ -179,7 +179,7 @@ button:hover {
     margin-top: 10px;
 }
 
-/* Add styles for the details button */
+/* Detalles */
 .details-button {
     background-color: #007bff;
     color: #fff;
@@ -191,10 +191,10 @@ button:hover {
 }
 
 .details-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* con mouse encima */
 }
 
-/* Add styles for the student card */
+/* ESTUDIANTES */
 .student-card {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -214,11 +214,11 @@ button:hover {
 }
 
 .instrument-card h2 {
-    color: black; /* Black color for the title */
+    color: black;
 }
 
 .instrument-card button.toggle-details {
-    background-color: #007bff; /* Blue background color for the button */
+    background-color: #007bff;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -232,17 +232,17 @@ button:hover {
 }
 
 .instrument-details {
-    display: none; /* Hide details by default */
+    display: none; /* Aregla detalles mostrandose solos */
 }
 
 .instrument-details p {
-    margin-left: 20px; /* Indent details */
+    margin-left: 20px; /* para indentar contenido de card detalles */
 }
 
 .delete-button {
-    padding: 5px 10px; /* Adjust padding to make the button smaller */
-    background-color: #888; /* Set grey background color */
-    color: #fff; /* Set text color to white */
+    padding: 5px 10px; 
+    background-color: #888; 
+    color: #fff; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -250,7 +250,7 @@ button:hover {
 }
 
 .delete-button:hover {
-    background-color: #555; /* Darken the background color on hover */
+    background-color: #555; /* pone mouse en boton */
 }
 
 .centered-content {
