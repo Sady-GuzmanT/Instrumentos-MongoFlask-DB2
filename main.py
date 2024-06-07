@@ -96,5 +96,48 @@ def delete_student(id):
     students_collection.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('view_students'))
 
+
+    
+@app.route("/add_student", methods=['GET', 'POST'])
+def view_student():
+    if request.method == 'POST':
+        # Process the form submission and add the new student to the database
+        # This logic will depend on how you handle form submissions in your Flask app
+        return redirect(url_for('index'))  # Redirect back to the index page after adding the student
+    else:
+        return render_template('add_students.html')
+
+
+@app.route("/submit_student", methods=['POST'])
+def submit_student():
+    if request.method == 'POST':
+        # Get the form data
+        rut = request.form['rut']
+        apellido1 = request.form['apellido1']
+        apellido2 = request.form['apellido2']
+        carrera = request.form['carrera']
+        certificadoAr = request.form['certificadoAr']
+        email = request.form['email']
+        nombreDePila = request.form['nombreDePila']
+        telefono = request.form['telefono']
+        
+        # Insert the student data into the collection
+        new_student = {
+            "rut": rut,
+            "apellido1": apellido1,
+            "apellido2": apellido2,
+            "carrera": carrera,
+            "certificadoAr": certificadoAr,
+            "email": email,
+            "nombreDePila": nombreDePila,
+            "telefono": telefono
+        }
+        students_collection.insert_one(new_student)
+        
+        # Redirect to the view_students route or wherever you want to redirect after adding the student
+        return redirect(url_for('view_students'))
+    
+    
+
 if __name__ == "__main__":
     app.run(debug=True)

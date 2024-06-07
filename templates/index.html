@@ -14,6 +14,8 @@
         <a href="{{ url_for('view_instruments') }}" class="button-link">Ver Instrumentos</a>
         <a href="{{ url_for('view_teachers') }}" class="button-link">Ver Profesores</a>
         <a href="{{ url_for('view_prestamos') }}" class="button-link">Ver Prestamos Eventuales</a>
+        <a href="{{ url_for('view_student') }}" class="button-link">Agregar Estudiante</a>
+
         {% if error %}
             <div class="error">{{ error }}</div>
         {% endif %}

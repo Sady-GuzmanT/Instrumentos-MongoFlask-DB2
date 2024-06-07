@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Estudiante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Agregar Estudiante</h1>
+    <hr>
+    <div class="content">
+        <form method="POST" action="{{ url_for('submit_student') }}">
+            <label for="rut">RUT:</label>
+            <input type="text" name="rut" id="rut" required><br>
+            <label for="nombreDePila">Nombre de Pila:</label>
+            <input type="text" name="nombreDePila" id="nombreDePila" required><br>
+            <label for="apellido1">Apellido Paterno:</label>
+            <input type="text" name="apellido1" id="apellido1" required><br>
+            <label for="apellido2">Apellido Materno:</label>
+            <input type="text" name="apellido2" id="apellido2" required><br>
+            <label for="carrera">Carrera:</label>
+            <input type="text" name="carrera" id="carrera" required><br>
+            <label for="certificadoAr">Certificado AR:</label>
+            <select name="certificadoAr" id="certificadoAr" required>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required><br>
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" id="telefono" required><br>
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+</body>
+</html>
