@@ -1,6 +1,6 @@
 # Instrumentos-MongoFlask-DB2
 
-#### Total Mess of a Web App <br>
+#### Total Mess of a Web App for college assignment<br>
 #### Uses: Python + Flask + Jquery + PyMongo + Mongo Cluster + Dotenv! + Docker<br>
 <br>
 
